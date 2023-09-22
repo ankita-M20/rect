@@ -10,24 +10,9 @@ class Rectangle {
   }
 
   draw() {
-    // this.context.fillStyle = this.isSelected ? "blue" : "red";
-    // this.context.fillRect(this.x, this.y, this.width, this.height);
-    // Draw the rectangle's border
-    this.context.strokeStyle = this.isSelected ? "blue" : "red";
+    this.context.strokeStyle = "red";
     this.context.lineWidth = 2;
     this.context.strokeRect(this.x, this.y, this.width, this.height);
-
-    // Draw an additional black border for the selected rectangle
-    if (this.isSelected) {
-      this.context.strokeStyle = "black";
-      this.context.lineWidth = 4; // you can adjust the width as needed
-      this.context.strokeRect(
-        this.x - 2,
-        this.y - 2,
-        this.width + 4,
-        this.height + 4
-      );
-    }
   }
 
   contains(x, y) {
@@ -109,7 +94,7 @@ canvas.addEventListener("wheel", (e) => {
   }
 });
 
-canvas.addEventListener("touchstart", (e) => {
+canvas.addEventListener("pointerstart", (e) => {
   if (e.touches.length === 2) {
     const touch1 = e.touches[0];
     const touch2 = e.touches[1];
@@ -121,7 +106,7 @@ canvas.addEventListener("touchstart", (e) => {
   }
 });
 
-canvas.addEventListener("touchmove", (e) => {
+canvas.addEventListener("pointermove", (e) => {
   if (e.touches.length === 2 && selectedRectangle) {
     const touch1 = e.touches[0];
     const touch2 = e.touches[1];
